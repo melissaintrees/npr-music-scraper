@@ -21,9 +21,10 @@ $(document).on("click", "p", function() {
     method: "GET",
     url: "/articles/" + thisId
   })
-    // With that done, add the note information to the page
+    // after clicking a p tag, this will add the empty note box to the page
     .then(function(data) {
-      console.log(data);
+
+      console.log("this happens when you click a p tag", data);
       // The title of the article
       $("#notes").append("<h3>" + data.title + "</h3>");
       // An input to enter a new title
@@ -50,7 +51,7 @@ $(document).on("click", "#savenote", function() {
 
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
-    method: "POST",
+    method: "GET",
     url: "/articles/" + thisId,
     data: {
       // Value taken from title input
@@ -62,7 +63,7 @@ $(document).on("click", "#savenote", function() {
     // With that done
     .then(function(data) {
       // Log the response
-      console.log(data);
+      console.log("this is the response from the ajax call get request upon clicking save note button:", data);
       // Empty the notes section
       $("#notes").empty();
     });

@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 // this adds a unique ID for every article that is scraped.
 var ArticleSchema = new Schema({
+
   // `title` is required and of type String
   title: {
     type: String,
