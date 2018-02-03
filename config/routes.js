@@ -1,10 +1,17 @@
 // Requiring Node Dependencies:
 
 var express = require("express"); //X
+
 var router = express.Router();
+
 var path = require('path');
+var mongoose = require('mongoose');
 var request = require('request'); // used for scraping
+
 var cheerio = require("cheerio"); // used for scraping
+
+// Set mongoose to leverage built in JavaScript ES6 Promises instead of relying on callbacks.
+mongoose.Promise = Promise;
 
 // Require all models
 var Article = require('../models/Article.js');
@@ -13,12 +20,12 @@ var index = require('../models/index.js');
 
 // Routes:
 router.get('/', function(req, res){
-
-  res.redirect('/scrape')
-  console.log("this initial get route is working!")
+// Renders a view and sends the rendered HTML string to the client. the argument is "index" since that is string path of the view file to render.
+  res.render("index")
+  // console.log("this initial get route is working!")
 });
 
-// A GET route for displaying all of the articles on the npr's music: the record section on the page:
+// This gets the articles from the npr's music: the record section, saves them to a db and displays
 
 router.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
@@ -146,7 +153,7 @@ router.post("/articles/:id", function(req, res) {
       // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
       // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
       // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      return Article.find({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+      return Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
     })
     .then(function(dbArticle) {
       // If we were able to successfully update an Article, send it back to the client
