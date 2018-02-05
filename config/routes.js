@@ -194,24 +194,56 @@ router.post("/notes/save/:id", function (req, res) {
     article: req.params.id
   });
   console.log(req.body);
-  
-  Note.create(req.body)
-    .then(function (dbNote) {
-      // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
-      // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      return Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
-    })
-    .then(function (dbArticle) {
-      // If we were able to successfully update an Article, send it back to the client
-      res.send(dbArticle);
-    })
-    .catch(function (err) {
-      // If an error occurred, send it to the client
-      res.send(err);
-    });
+  // saving the new Note to the DB:
+  newNote.save(function(error, note){
+    if (error){
+      console.log(error)
+    }
+    else {
+      // update the database with the new note:
+      Article.findOneAndUpdate({ "_id": req.params.id }, { $push: {"notes": note} })
+      // run the query:
+      .exec(function(error){
+        if (error){
+          console.log(error);
+          res.send(error);
+        }
+        else {
+          // send note to browser
+          res.send(note);
+        }
+      });
+    }
+  });
 });
 
+// Route for deleting a note
+
+// Route for saving/updating an Article's associated Note
+router.delete("/notes/delete/:note_id/:articl_id", function (req, res) {
+  // Get note ID to find and Delete it
+  Note.findOneAndRemove({ "_id": req.params.note_id}, function(error, doc){
+    if (error){
+      console.log(error);
+      res.send(error);
+    }
+    else {
+      // update the database with the new note:
+      Article.findOneAndUpdate({ "_id": req.params.id }, { $pull: { "notes": req.params.note_id }})
+        // run the query:
+        .exec(function (error) {
+          if (error) {
+            console.log(error);
+            res.send(error);
+          }
+          else {
+            // send note to browser
+            res.send("Note Successfully Deleted");
+          }
+        });
+    }
+  });
+});
 
 // Export Router to Server.js
 module.exports = router;
