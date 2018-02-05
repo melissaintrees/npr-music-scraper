@@ -218,8 +218,6 @@ router.post("/notes/save/:id", function (req, res) {
 });
 
 // Route for deleting a note
-
-// Route for saving/updating an Article's associated Note
 router.delete("/notes/delete/:note_id/:articl_id", function (req, res) {
   // Get note ID to find and Delete it
   Note.findOneAndRemove({ "_id": req.params.note_id}, function(error, doc){
