@@ -1,0 +1,13 @@
+
+    <div id="wrapper">
+      <h1>NPR's The Record Music Section - Web Scrapper</h1>
+      <h2>Scrape the Web, Leave a Note, Save an Item</h2>
+      <div id="articles">
+        {{#each articles}}
+          {{#unless this.saved}}
+            <h3>this.title</h3>
+          {{/unless}}
+        {{/each}}
+      </div>
+      <div id="notes"></div>
+    </div>
