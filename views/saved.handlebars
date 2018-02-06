@@ -1,10 +1,38 @@
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">NPR's The Record Web Scraper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/saved">Saved Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/scrape">Scrape New Articles</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
 <div id="wrapper">
-    <h1>NPR's The Record Music Section - Web Scrapper</h1>
-    <h2>SAVED ARTICLES</h2>
+    <h1>Saved Articles:</h1>
     <div id="articles">
-        {{#each articles}} {{#if this.saved}}
-        <h3>this.title</h3>
-        {{/if}} {{/each}}
+        {{#each saved}} 
+            <h3>{{this.title}}</h3>
+        {{/each}}
     </div>
-    <div id="notes"></div>
-</div>
+    <div id="notes">
+
+    </div>
+
+</div>  
+

@@ -19,8 +19,8 @@ var Article = require('../models/Article.js');
 var Note = require('../models/Note.js');
 var index = require('../models/index.js');
 
-// for the handlebars route: { "saved": false },
 // Routes:
+
 // This route reads all the articles in the database and renders it to the index.handlebars page
 router.get('/', function(req, res){
   Article.find({"saved": false}, function(error, data) {
@@ -31,19 +31,28 @@ router.get('/', function(req, res){
     res.render("index", hbsObject);
   });
 });
+
 // a route that takes you to a handlebars page with the saved articles.
 router.get("/saved", function(req, res){
-  Article.find({"saved": true})
-  .populate("notes")
-  .exec(function(error, articles){
-    var hbsObject = {
-      article: articles
-    };
-    res.render("saved", hbsObject);
+ 
+  // finds the articles with the saved bool as true
+  Article.find({saved: true})
+  // populates the notes, if any
+
+  .populate("notes", "body")
+  // runs the query from the db
+  .exec(function(error, doc){
+    if(error){
+      console.log(error);
+    }
+    else {
+      // 
+      res.render("saved", {saved: doc});
+    }
   });
 });
 
- // This gets the articles from the npr's music: the record section, saves them to a db and displays
+// This gets the articles from the npr's music: the record section, saves them to a db and displays
 
 router.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
@@ -113,7 +122,8 @@ router.get("/scrape", function(req, res) {
 
     });
       // send message back to client after scraping
-      res.send("Scrape Complete");
+      // res.send("Scrape Complete");
+      res.redirect("/");
   });
 });
 
@@ -151,23 +161,18 @@ router.get("/articles/:id", function(req, res) {
     });
 });
 
-// Route for saving an article
-router.post("articles/save/:id", function(req, res){
-  // find the article id and update it's saved property to true
-  Article.findOneAndUpdate({ "_id": req.params.id}, {"saved": true })
-  // then run the query:
-  .exec(function (error, doc) {
-    if (error) {
-      console.log(error)
+// Route for saving an article, updating saved boolean from false to true.
+router.post("/saved/:id", function (req, res) {
+  // res.redirect("/")
+  Article.update({ _id: req.params.id }, { $set: { saved: true } }, function (err, doc) {
+    if (err) {
+      res.send(err);
     }
-    // If we were able to successfully find an Article, and update the boolen, send doc to the broweser
     else {
-      res.send(doc);
+      res.redirect("/");
     }
   });
-
 });
-
 
 // Delete an article
 router.post("/articles/delete/:id", function (req, res) {
@@ -218,7 +223,7 @@ router.post("/notes/save/:id", function (req, res) {
 });
 
 // Route for deleting a note
-router.delete("/notes/delete/:note_id/:articl_id", function (req, res) {
+router.delete("/notes/delete/:note_id/:article_id", function (req, res) {
   // Get note ID to find and Delete it
   Note.findOneAndRemove({ "_id": req.params.note_id}, function(error, doc){
     if (error){
