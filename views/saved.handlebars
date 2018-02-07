@@ -23,16 +23,22 @@
 </header>
 
 
-<div id="wrapper">
-    <h1>Saved Articles:</h1>
-    <div id="articles">
-        {{#each saved}} 
-            <h3>{{this.title}}</h3>
-        {{/each}}
+<div class="container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-9">
+            <div id="articles">
+                {{#each saved}}
+                <h3>{{this.title}}</h3>
+                <p>{{this.url}}</p>
+                <p>{{this.summary}}</p>
+                <form method="POST" action="/articles/delete/{{this.id}}?_method=DELETE">
+                <button type="submit" class="delete-artic btn btn-danger">Delete</button>
+                </form>
+                <button type="submit" class="add-note btn btn-default">Add a Note</button>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-1"></div>
     </div>
-    <div id="notes">
-
-    </div>
-
-</div>  
-
+</div>

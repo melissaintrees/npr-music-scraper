@@ -87,16 +87,16 @@ router.get("/scrape", function(req, res) {
        // console.log(result)
 
        //   // If the current results are not already in the titlesArray...
-      //   if(titlesArray.indexOf(result.title) == -1){
+        if(titlesArray.indexOf(result.title) == -1){
 
       //     // push the saved item to our titlesArray to
-      //     titlesArray.push(result.title);
+          titlesArray.push(result.title);
 
       //     // Only add the entry to the database if is not already there
-      //     Article.count({ title: result.title, summary: result.summary, url: result.url}, function (err, test){
+          Article.count({ title: result.title, summary: result.summary, url: result.url}, function (err, test){
 
       //       // If the count is 0, then the entry is unique and should be saved
-      //       if(test == 0){
+            if(test == 0){
 
        // Creates a new db entry using the Article Model with the result object and stores it in the entry var. 
         var entry = new Article(result);
@@ -111,14 +111,14 @@ router.get("/scrape", function(req, res) {
           }
         })
         
-      //       }
+            }
       //       // Log that scrape is working, just the content was already in the Database
-      //       else{
-      //         console.log('Redundant Database Content. Not saved to DB.')
-      //       }
+            else{
+              console.log('Redundant Database Content. Not saved to DB.')
+            }
 
-      //     });
-      // }
+          });
+      }
 
     });
       // send message back to client after scraping
@@ -174,7 +174,7 @@ router.post("/saved/:id", function (req, res) {
   });
 });
 
-// Delete an article
+// Delete an article - Basically changes the saved to false
 router.post("/articles/delete/:id", function (req, res) {
   // Use the article id to find and update its saved boolean
   Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": false, "notes": [] })
@@ -186,7 +186,8 @@ router.post("/articles/delete/:id", function (req, res) {
       }
       else {
         // Or send the document to the browser
-        res.send(doc);
+        // res.send(doc);
+        res.redirect("/saved");
       }
     });
 });
