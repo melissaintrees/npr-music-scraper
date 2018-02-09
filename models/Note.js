@@ -11,12 +11,12 @@ var NoteSchema = new Schema({
   // `body` is of type String
   body: {
     type: String
-  },
-  // reference to the article
-  article: {
-    type: Schema.Types.ObjectId,
-    ref: "Article"
   }
+  // // reference to the article
+  // article: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Article"
+  // }
 });
 
 // This creates our model from the above schema, using mongoose's model method

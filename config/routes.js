@@ -84,9 +84,9 @@ router.get("/scrape", function(req, res) {
           summary: summary,
           url: url
         }
-       // console.log(result)
+      // console.log(result)
 
-       //   // If the current results are not already in the titlesArray...
+      //   // If the current results are not already in the titlesArray...
         if(titlesArray.indexOf(result.title) == -1){
 
       //     // push the saved item to our titlesArray to
@@ -98,7 +98,7 @@ router.get("/scrape", function(req, res) {
       //       // If the count is 0, then the entry is unique and should be saved
             if(test == 0){
 
-       // Creates a new db entry using the Article Model with the result object and stores it in the entry var. 
+      // Creates a new db entry using the Article Model with the result object and stores it in the entry var. 
         var entry = new Article(result);
         
         // saves the entry to the db!
@@ -169,7 +169,7 @@ router.post("/saved/:id", function (req, res) {
       res.send(err);
     }
     else {
-      res.redirect("/");
+      res.redirect("/saved")
     }
   });
 });
@@ -195,28 +195,20 @@ router.post("/articles/delete/:id", function (req, res) {
 // Route for saving/updating an Article's associated Note
 router.post("/notes/save/:id", function (req, res) {
   // Create a new note and pass the req.body to the entry
-  var newNote = new Note({
-    body: req.body.text,
-    article: req.params.id
-  });
-  console.log(req.body);
+  var newNote = new Note(req.body);
+  console.log("new note: ", newNote);
   // saving the new Note to the DB:
   newNote.save(function(error, note){
     if (error){
       console.log(error)
     }
     else {
-      // update the database with the new note:
-      Article.findOneAndUpdate({ "_id": req.params.id }, { $push: {"notes": note} })
-      // run the query:
-      .exec(function(error){
-        if (error){
-          console.log(error);
-          res.send(error);
+      Article.findOneAndUpdate({ _id: req.params.id }, { $push: { "notes": note } }, { new: true }).exec(function (err, newdoc) {
+        if (err) {
+          res.send(err);
         }
         else {
-          // send note to browser
-          res.send(note);
+          res.redirect("/saved");
         }
       });
     }
@@ -224,27 +216,16 @@ router.post("/notes/save/:id", function (req, res) {
 });
 
 // Route for deleting a note
-router.delete("/notes/delete/:note_id/", function (req, res) {
+router.post("/notes/delete/:id/", function (req, res) {
   // Get note ID to find and Delete it
-  Note.findOneAndRemove({ "_id": req.params.note_id}, function(error, doc){
+  Note.remove({ "_id": req.params.id}, function(error, doc){
     if (error){
       console.log(error);
       res.send(error);
     }
     else {
       // update the database with the new note:
-      Article.findOneAndUpdate({ "_id": req.params.id }, { $pull: { "notes": req.params.note_id }})
-        // run the query:
-        .exec(function (error) {
-          if (error) {
-            console.log(error);
-            res.send(error);
-          }
-          else {
-            // send note to browser
-            res.send("Note Successfully Deleted");
-          }
-        });
+      res.redirect("/saved")
     }
   });
 });
