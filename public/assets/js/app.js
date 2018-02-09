@@ -16,26 +16,26 @@
 // });
 
 // Handler for scraping
-$("#scrape").on("click", function () {
-  $.ajax({
-    method: "GET",
-    url: "/scrape",
-  }).done(function (data) {
-    console.log(data)
-    window.location = "/"
-  })
-});
+// $("#scrape").on("click", function () {
+//   $.ajax({
+//     method: "GET",
+//     url: "/scrape",
+//   }).done(function (data) {
+//     console.log(data)
+//     window.location = "/"
+//   })
+// });
 
-//Handler for Saving an article
-$(".save").on("click", function () {
-  var thisId = $(this).attr("data-id");
-  $.ajax({
-    method: "POST",
-    url: "/articles/save/" + thisId
-  }).done(function(data){
-    window.location = "/"
-  })
-});
+// //Handler for Saving an article
+// $(".save").on("click", function () {
+//   var thisId = $(this).attr("data-id");
+//   $.ajax({
+//     method: "POST",
+//     url: "/articles/save/" + thisId
+//   }).done(function(data){
+//     window.location = "/"
+//   })
+// });
 
 
 // // Whenever someone clicks a p tag

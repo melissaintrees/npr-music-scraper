@@ -1,36 +1,27 @@
-body {
-  background-color: darkred;
-  color: white;
-}
-
+body { background-color: darkred; color: black;}
 #wrapper {
   width: 960px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 5%;
 }
-
 #articles {
-  margin-top: 100px;
-}
+     margin-top: 100px;
 
+}
 #notes {
   float: right;
   width: 30%;
 }
-
-textarea,
-input {
+textarea, input {
   display: block;
   width: 100%;
   background-color: #FCF5C7;
 }
-
 input {
   height: 36px;
   font-size: 24px;
 }
-
 textarea {
   height: 200px;
   font-size: 18px;

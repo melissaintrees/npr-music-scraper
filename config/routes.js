@@ -174,7 +174,7 @@ router.post("/saved/:id", function (req, res) {
   });
 });
 
-// Delete an article - Basically changes the saved to false
+// Delete an article - Basically changes the saved boolean to false and puts it back in the scraped sectionnode
 router.post("/articles/delete/:id", function (req, res) {
   // Use the article id to find and update its saved boolean
   Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": false, "notes": [] })
@@ -224,7 +224,7 @@ router.post("/notes/save/:id", function (req, res) {
 });
 
 // Route for deleting a note
-router.delete("/notes/delete/:note_id/:article_id", function (req, res) {
+router.delete("/notes/delete/:note_id/", function (req, res) {
   // Get note ID to find and Delete it
   Note.findOneAndRemove({ "_id": req.params.note_id}, function(error, doc){
     if (error){
