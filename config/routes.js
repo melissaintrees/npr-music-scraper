@@ -169,7 +169,7 @@ router.post("/saved/:id", function (req, res) {
       res.send(err);
     }
     else {
-      res.redirect("/saved")
+      res.redirect("/")
     }
   });
 });

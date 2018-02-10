@@ -28,7 +28,8 @@
     <div class="col-9">
       <div id="articles">
 
-        {{#each articles}} {{#unless this.saved}}
+        {{#each articles}} 
+        {{#unless this.saved}}
         <h3>{{this.title}}</h3>
         <p>{{this.url}}</p>
         <p>{{this.summary}}</p>
@@ -36,7 +37,8 @@
           <button type="submit" class="save btn btn-default">Save Article</button>
         </form>
 
-        {{/unless}} {{/each}}
+        {{/unless}} 
+        {{/each}}
       </div>
     </div>
     <div class="col-1"></div>

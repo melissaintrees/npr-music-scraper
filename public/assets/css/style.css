@@ -9,6 +9,14 @@ body { background-color: darkred; color: black;}
      margin-top: 100px;
 
 }
+.titles-art {
+  color: red;
+}
+
+.modal-header{
+  background-color: powderblue;
+}
+
 #notes {
   float: right;
   width: 30%;
