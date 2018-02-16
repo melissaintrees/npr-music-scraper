@@ -21,7 +21,7 @@ mongoose.Promise = Promise;
 // Initialize Express
 var app = express();
 
-//Use morgan logger for debugging
+//Use logger for debugging
 app.use(logger("dev"));
 
 // Use body-parser for handling form submissions
