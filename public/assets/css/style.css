@@ -1,20 +1,75 @@
-body { background-color: darkred; color: black;}
-#wrapper {
-  width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 5%;
-}
-#articles {
-     margin-top: 100px;
-
-}
-.titles-art {
-  color: red;
+body {
+  background-color: #490606;
+  color: #101c1b;
+  font-family: 'Lato', sans-serif;
 }
 
+.card-title {
+  color: #6cbeb8;
+  font-size: 1.2em;
+  font-family: 'Playfair Display',serif;
+}
+
+
+
+.modal-content {
+  background-color:#e9fdfb;
+}
+
+a {
+  color: #9eded7;
+}
+
+a:hover {
+  color: #e9fdfb;
+  text-decoration-line: none;
+}
+
+.d-flex {
+  display: flex;
+}
+.jumbotron {
+  padding: 2rem;
+}
+
+.bckgrd-color {
+  background-color: #e9fdfb !important;
+}
+.pg-title {
+  font-family: 'Playfair Display', serif;
+  color: #490606;
+  font-size: 56px;
+  text-transform: uppercase;
+  font-weight: 700px;
+}
+.btn-home {
+  background-color: #6cbeb8;
+  color: #e9fdfb;
+}
+
+.btn-scrape, .btn-outline-danger {
+  background-color: #f82025;
+  color: #e9fdfb;
+}
+
+.summary {
+  color: #E9FDFB;
+}
+
+.btn:hover {
+  color: #490606;
+}
 .modal-header{
-  background-color: powderblue;
+  background-color: #9eded7;
+}
+.note-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+
+}
+.modal-title {
+  font-family: 'Playfair Display',serif;
+  color: #490606;
 }
 
 #notes {
@@ -34,6 +89,10 @@ textarea {
   height: 200px;
   font-size: 18px;
 }
+
+/* font-family: 'Playfair Display', serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Lato', sans-serif; */
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -57,4 +116,28 @@ body {
   line-height: 60px;
   /* Vertically center the text there */
   background-color: #f5f5f5;
+}
+
+@media only screen and (max-width: 700px) {
+  .jumbotron {
+    margin-bottom: 0px;
+  }
+  .jumbotron h1 {
+    font-size: 40px;
+  }
+  .lead {
+    display: none;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .jumbotron {
+    margin-bottom: -20px;
+    height: 150px;
+  }
+  .jumbotron h1 {
+    font-size: 30px;
+  }
+  .lead {
+    display: none;
+  }
 }

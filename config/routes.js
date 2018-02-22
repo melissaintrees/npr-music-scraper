@@ -176,8 +176,8 @@ router.post("/saved/:id", function (req, res) {
 
 // Delete an article - Basically changes the saved boolean to false and puts it back in the scraped sectionnode
 router.post("/articles/delete/:id", function (req, res) {
-  // Use the article id to find and update its saved boolean
-  Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": false, "notes": [] })
+  // Use the article id to find and remove its saved boolean
+  Article.findOneAndRemove({ "_id": req.params.id }, { "saved": false, "notes": [] })
     // run the query
     .exec(function (error, doc) {
       // Log any errors

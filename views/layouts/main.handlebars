@@ -6,14 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>NPR's The Record Music Section Web Scraper</title>
 
+
   {{!-- bootstrap css--}}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
 
   {{!-- external css --}}
   <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+   {{!-- google fonts--}}
+  <link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display:700,900|Raleway" rel="stylesheet"
+
 </head>
   <body>
+    <header>
+      <section class="jumbotron text-center bckgrd-color">
+        <div class="container">
+          <h1 class="jumbotron-heading pg-title">NPR's The Record Webscraper</h1>
+          <p class="lead">Scrapes new articles from the NPR music website, saving them to a database. With the save article button, you are able to
+          keep interesting peices in a collection and add notes, thoughts, and to-do’s.</p>
+          <p>
+            <a class="btn btn-home" href="/">Home</a>
+            <a class="btn btn-scrape" href="/scrape">Scrape</a>
+            <a class="btn btn-secondary" href="/saved">Saved</a>
+          </p>
+        </div>
+      </section>
+    </header>
+
     {{{ body }}}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
