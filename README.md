@@ -9,7 +9,7 @@ Full Stack Webscraper with an Express server that uses Cheerio &Request to grab 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Video
- ![gif](https://giphy.com/gifs/fQlSG588m62TOg14EA/html5)
+ ![gif](https://media.giphy.com/media/fQlSG588m62TOg14EA/giphy.gif)
 
 
 Though most of the logic is handled on the back end, Bootstrap was leveraged to provide a responsive and user friendly interface.
