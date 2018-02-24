@@ -1,88 +1,53 @@
 # NPR Music's The Record Webscraper
 
-Full Stack Webscraper with an Express server that uses Cheerio & Request to grab articles from NPR's the Record website section, and then stores them in a Mongodb database. The app gives you the option of saving and deleting articles from the database, and also gives you the option of writing notes related to the articles that you save. Data is dispersed using Handlebars and it was designed with the bootstrap 4 framework. It is deployed on [Heroku](https://npr-music-scraper.herokuapp.com/) and/or you can install it on your local machine.
+## About
 
-## Getting Started
+Full Stack Webscraper with an Express server that uses Cheerio &Request to grab articles from NPR's the Record website section, and then stores them in a Mongodb database. The app gives you the option of saving and deleting articles from the database, and also gives you the option of writing notes related to the articles that you save. Data is dispersed using Handlebars and it was designed with the bootstrap 4 framework. It is deployed on [Heroku](https://npr-music-scraper.herokuapp.com/) and/or you can install it on your local machine.
+
+## How it works
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Video
+[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[Video](https://giphy.com/gifs/fQlSG588m62TOg14EA/html5)
 
-What things you need to install the software and how to install them
+Though most of the logic is handled on the back end, Bootstrap was leveraged to provide a responsive and user friendly interface.
 
-```
-Give examples
-```
+- All Screen Mock Up
+  ![Mock Up](/screenshots/mockup_diff_screens.jpg)
 
-### Installing
+- Full Screen View
+  ![Full Screen](/screenshots/full_view.png)
 
-A step by step series of examples that tell you have to get a development env running
+- Mobile Screen View
 
-Say what the step will be
+  ![Mobile Screen](/screenshots/mobile_view.jpg)
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To deploy in your system:
+
+  1. Download the repo.
+  2. In your terminal `npm install` to install the node dependencies
+  3. In a new terminal tab, run `Mongo` and `Mongod`
+  4. Run the server with Node JS by running `node server.js`
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+* [NodeJs](https://nodejs.org/en/) - The programming framework
+* [Express](https://expressjs.com/) - The server framework.
+* [Request](https://cheerio.js.org/) - Jquery for the Server
+* [Mongoose](http://mongoosejs.com/) - Database Management
+* [Handlebars](http://handlebarsjs.com/) - Templating System
+* [Bootstrap](http://getbootstrap.com) - Responsive Framework System
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Melissa St Moore** - *Initial work*
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
+* (https://github.com/tomtom28/mongodb-web-scraper) [Paper Scraper, code utilized]
+* (https://github.com/luomichelle/Mongoose-and-Cheerio-) [Hologram News Cube]
