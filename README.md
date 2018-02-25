@@ -9,20 +9,12 @@ Full Stack Webscraper with an Express server that uses Cheerio &Request to grab 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Video
-[![NPR Music's The Record Web Scraper](http://i.imgur.com/a/RCmxz)](https://vimeo.com/257386878 "Npr's The Record Web Scraper - Click to Watch!")
 
-Though most of the logic is handled on the back end, Bootstrap was leveraged to provide a responsive and user friendly interface.
+
+[![NPR Music's The Record Web Scraper](/screenshots/demo_video_cover.png)](https://vimeo.com/257386878 "Npr's The Record Web Scraper - Click to Watch!")
 
 - All Screen Mock Up
   ![Mock Up](/screenshots/mockup_diff_screens.jpg)
-
-- Full Screen View
-  ![Full Screen](/screenshots/full_view.png)
-
-- Mobile Screen View
-
-  ![Mobile Screen](/screenshots/mobile_view.jpg)
-
 
 ## Deployment
 
