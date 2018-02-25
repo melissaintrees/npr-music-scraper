@@ -10,10 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Video
 
-
 [![NPR Music's The Record Web Scraper](/screenshots/demo_video_cover.png)](https://vimeo.com/257386878 "Npr's The Record Web Scraper - Click to Watch!")
 
-- All Screen Mock Up
+### Responsive Design All Screen Mock Up
+
   ![Mock Up](/screenshots/mockup_diff_screens.jpg)
 
 ## Deployment
