@@ -1,26 +1,3 @@
- {{!--
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-9">
-      <div id="articles">
-
-        {{#each articles}} {{#unless this.saved}}
-        <h2>
-          <a href="{{this.url}}" id="savedLink">{{this.title}}</a>
-        </h2>
-        <p>{{this.summary}}
-          <form method="POST" action="/saved/{{this.id}}?_method=PUT">
-            <button type="submit" class="save btn btn-default">Save Article</button>
-          </form>
-        </p>
-        {{/unless}} {{/each}}
-      </div>
-    </div>
-    <div class="col-1"></div>
-  </div>
-</div> --}}
-
 <div class="album py-5">
   <div class="container">
 
